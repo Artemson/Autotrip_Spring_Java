@@ -17,7 +17,8 @@ Java, Maven, Spring Framework, PostgreSQL
 
 ## Запуск
 Скачать утилиту Docker и запустить контейнер:
-```docker pull postgres
+```
+docker pull postgres
 ```
 ```
 docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=application -d postgres
