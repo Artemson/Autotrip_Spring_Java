@@ -1,0 +1,105 @@
+<div th:fragment="header">
+  <a class="animation" href="/"
+    ><h3 class="float-md-start mb-0 text-white"><span style="color: #3afffb">Auto</span>Trip</h3></a
+  >
+  <nav class="nav nav-masthead justify-content-center float-md-end">
+    <a class="nav-link active" aria-current="page" href="/">Главная</a>
+    <a class="nav-link" aria-current="page" href="/about">О проекте</a>
+    <a class="nav-link">
+      <a href="/login" class="btn btn-md btn-secondary fw-bold border-white bg-white">Войти</a>
+    </a>
+  </nav>
+</div>
+
+<div th:fragment="header-about">
+  <a class="animation" href="/"
+    ><h3 class="float-md-start mb-0 text-white"><span style="color: #3afffb">Auto</span>Trip</h3></a
+  >
+  <nav class="nav nav-masthead justify-content-center float-md-end">
+    <a class="nav-link" href="/">Главная</a>
+    <a class="nav-link active" aria-current="page" href="templates/task/about">О проекте</a>
+    <a class="nav-link">
+      <a href="/login" class="btn btn-md btn-secondary fw-bold border-white bg-white">Войти</a>
+    </a>
+  </nav>
+</div>
+
+<nav th:fragment="header-into" class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container">
+    <a class="d-flex navbar-brand" href="/personal">
+      <p class="m-0 p-0" style="color: #3afffb">Auto<span style="color: white">Trip</span></p>
+    </a>
+    <ul class="navbar-nav me-auto nav mx-4">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="/personal">Главная</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLink"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Туры
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/task" sec:authorize="hasAnyRole('ROLE_EDITOR','ROLE_ADMIN')">Туры</a></li>
+          <li>
+            <a sec:authorize="hasAnyRole('ROLE_EDITOR')" class="dropdown-item" href="/task/author"
+              >Для автора</a
+            >
+          </li>
+          <li>
+            <a sec:authorize="hasAnyRole('ROLE_EDITOR')" class="dropdown-item" href="/task/observer"
+              >Для менеджера</a
+            >
+          </li>
+          <li>
+            <a sec:authorize="hasAnyRole('ROLE_USER')" class="dropdown-item" href="/task/executor"
+              >Для клиента</a
+            >
+          </li>
+          <li>
+            <a sec:authorize="hasAnyRole('ROLE_EDITOR')" class="dropdown-item" href="/task/wait"
+              >Ждет ответа</a
+            >
+          </li>
+          <li>
+            <a sec:authorize="hasAnyRole('ROLE_EDITOR')" class="dropdown-item" href="/task/close"
+              >Подтверждено</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <a
+      sec:authorize="hasAnyRole('ROLE_EDITOR','ROLE_ADMIN')"
+      href="/creatTask"
+      class="btn btn-warning text-white"
+      style="font-weight: bold; background: #3afffb; text-shadow: black 2px 0px 5px"
+      >Добавить тур</a
+    >
+    <a sec:authorize="hasRole('ROLE_ADMIN')" class="ms-4" href="/setting" style="color: white"
+      ><i style="font-size: 1.8rem" class="bi bi-gear-wide-connected"></i
+    ></a>
+    <ul class="navbar-nav nav mx-3">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLinkUser"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          th:text="${#authentication.name}"
+        >
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkUser">
+          <li><a class="dropdown-item" href="/logout">Выход</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

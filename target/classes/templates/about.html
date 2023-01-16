@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      class="h-100" lang="ru">
+<head>
+    <title th:text="${'О проекте'}"></title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom styles for this template -->
+    <link type="text/css" th:href="@{/css/cover.css}" href="/static/css/cover.css" rel="stylesheet"/>
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <header th:insert="/blocks/header :: header-about" class="mb-auto"></header>
+
+    <main class="px-3">
+    </main>
+
+    <p class="lead"> Autotrip - Молодая и быстрорастущая компания по поиску и покупке авиабилетов.</p>
+    <p class="lead">Была основана в 2022 году.</p>
+    <p class="lead">Наши отцы-основатели: Ветлугаев Артём и Бандурин Никита.</p>
+    <footer class="mt-auto text-white-50 text-center">
+        <p>Курсовая работа по разработке Java-приложений. <br> Авторы: Бандурин Н.А., Ветлугаев А.С.</p>
+    </footer>
+</div>
+</body>
+</html>
