@@ -39,7 +39,7 @@ docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTG
       </tr>
       <tr>
           <td>
-            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/hone.png" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/home.png" width="40%"></div>
         </td>
     </tr>
     <tr>
