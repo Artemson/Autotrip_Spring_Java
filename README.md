@@ -29,17 +29,17 @@ docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTG
 <table>
     <tr>
         <td>
-              <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
+              <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/begin.png" width="40%"></div>
         </td>
           </tr>
       <tr>
         <td>
-            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/login.png" width="40%"></div>
         </td>
       </tr>
       <tr>
           <td>
-            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/hone.png" width="40%"></div>
         </td>
     </tr>
     <tr>
