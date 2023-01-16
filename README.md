@@ -65,11 +65,11 @@ UPDATE users_roles SET roles_id = 1 WHERE user_id = 1;
     </tr>
     <tr>
           <td>
-            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/src/main/resources/static/img/add_trip.png" width="40%"></div>
         </td>
     </tr>
 </table>
 
 
-## Автор
+## Авторы
 Студенты группы ИКПИ-01 Ветлугаев Артём и Бандурин Никита
