@@ -44,16 +44,6 @@
             </tr>
             </thead>
             <tbody id="MyMenu">
-            <tr th:each="el : ${tasks}">
-                <td><i class="bi bi-bookmark"></i> <a th:href="'/view/'+${el.id}"
-                                                      th:text="${el.name}"></a></td>
-                <td th:text="${el.depart}"></td>
-                <td th:text="${el.arrival}"></td>
-                <td th:text="${el.observer}"></td>
-                <td th:text="${el.executor}"></td>
-                <td th:text="${el.price}"></td>
-                <td th:text="${el.status}"></td>
-            </tr>
             <tr sec:authorize="hasAnyRole('ROLE_USER')" th:each="el : ${tasksExecutor}">
                 <td><i class="bi bi-bookmark"></i> <a th:href="'/view/'+${el.id}"
                                                       th:text="${el.name}"></a></td>

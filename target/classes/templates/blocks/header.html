@@ -77,13 +77,10 @@
     <a
       sec:authorize="hasAnyRole('ROLE_EDITOR','ROLE_ADMIN')"
       href="/creatTask"
-      class="btn btn-warning text-white"
-      style="font-weight: bold; background: #3afffb; text-shadow: black 2px 0px 5px"
+      class="btn btn-warning text-white bth-2"
+      style="font-weight: bold; background: #3afffb; text-shadow: black 2px 0px 5px; border-color:#3afffb"
       >Добавить тур</a
     >
-    <a sec:authorize="hasRole('ROLE_ADMIN')" class="ms-4" href="/setting" style="color: white"
-      ><i style="font-size: 1.8rem" class="bi bi-gear-wide-connected"></i
-    ></a>
     <ul class="navbar-nav nav mx-3">
       <li class="nav-item dropdown">
         <a
