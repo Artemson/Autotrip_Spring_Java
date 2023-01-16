@@ -50,21 +50,26 @@ UPDATE users_roles SET roles_id = 1 WHERE user_id = 1;
 <table>
     <tr>
         <td>
-              <div align="center"><img src="https://github.com/mirokiro5/OfficeRent/blob/main/images/main_page.jpg" width="40%"></div>
+              <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/begin.png" width="40%"></div>
         </td>
           </tr>
       <tr>
         <td>
-            <div align="center"><img src="https://github.com/mirokiro5/OfficeRent/blob/main/images/details_page.jpg" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/login.png" width="40%"></div>
         </td>
       </tr>
       <tr>
           <td>
-            <div align="center"><img src="https://github.com/mirokiro5/OfficeRent/blob/main/images/rent_page.jpg" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/home.png" width="40%"></div>
+        </td>
+    </tr>
+    <tr>
+          <td>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
         </td>
     </tr>
 </table>
 
 
 ## Автор
-Студент группы ИКПИ-01 Миронов Кирилл
+Студенты группы ИКПИ-01 Ветлугаев Артём и Бандурин Никита
