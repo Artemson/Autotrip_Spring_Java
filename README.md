@@ -50,17 +50,17 @@ UPDATE users_roles SET roles_id = 1 WHERE user_id = 1;
 <table>
     <tr>
         <td>
-              <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/begin.png" width="40%"></div>
+              <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
         </td>
           </tr>
       <tr>
         <td>
-            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/login.png" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
         </td>
       </tr>
       <tr>
           <td>
-            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/tree/main/src/main/resources/static/img/home.png" width="40%"></div>
+            <div align="center"><img src="https://github.com/Artemson/Autotrip_Spring_Java/blob/main/src/main/resources/static/img/add_trip.png" width="40%"></div>
         </td>
     </tr>
     <tr>
