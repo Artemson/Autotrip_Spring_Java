@@ -16,33 +16,11 @@ Java, Maven, Spring Framework, PostgreSQL
    * Хранение в базе данных направления, статус, даты вылета, стоимость.
 
 ## Запуск
-Создайте нового пользователя и пустую БД:
-```mysql
-mysql -u root -p -e 'CREATE DATABASE IF NOT EXISTS officerent;'
-mysql -u root -p -e "CREATE USER 'officerent'@'localhost' IDENTIFIED BY 'officerent12345';"
-mysql -u root -p -e "GRANT ALL ON officerent.* TO 'officerent'@'localhost';"
+Скачать утилиту Docker и запустить контейнер:
+```docker pull postgres
 ```
 ```
-mvn compile
-mvn spring-boot:run
-```
-После запуска проекта выполните следующие SQL скрипты:
-```mysql
-INSERT INTO role(name) VALUES
-                        ('ADMIN_ROLE'),
-                        ('MANAGER_ROLE'),
-                        ('USER_ROLE');
-                        
-INSERT INTO office(address, description, image, name, price) VALUES
-                        ('address1', 'description1', 'bigoffice.jpg', 'Большой офис', 120000),
-                        ('address2', 'description2', 'smalloffice.jpg', 'Маленький офис', 70000),
-                        ('address3', 'description3', 'office.jpg', 'Средний офис', 90000),
-                        ('address4', 'description4', 'office.jpg', 'name4', 4),
-                        ('address5', 'description5', 'office.jpg', 'name5', 5);
-```
-После создания первого пользователя, предоставьте ему права администратора:
-```mysql
-UPDATE users_roles SET roles_id = 1 WHERE user_id = 1;
+docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=application -d postgres
 ```
 
 ## Скриншоты
