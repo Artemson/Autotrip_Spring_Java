@@ -55,25 +55,4 @@ public class TaskController {
         model.addAttribute("tasks", tasks);
         return "task/task-observ";
     }
-
-    @GetMapping("/task/wait")
-    public String waitAnswer(Model model){
-        String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        Iterable<Task> tasks = taskRepository.findByStatusAndObserver("Ожидает подтверждения",currentUser);
-        Iterable<Task> tasksExec = taskRepository.findByStatusAndExecutor("Ожидает подтверждения",currentUser);
-        model.addAttribute("tasks", tasks);
-        model.addAttribute("taskExec", tasksExec);
-        return "task/task-wait";
-    }
-
-    @GetMapping("/task/close")
-    public String taskClose(Model model){
-        String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        Iterable<Task> tasks = taskRepository.findByStatusAndExecutor("Закрыт",currentUser);
-        Iterable<Task> tasksCloseByAuthor = taskRepository.findByStatusAndExecutor("Закрыт автором",currentUser);
-        model.addAttribute("tasks", tasks);
-        model.addAttribute("tasksCloseByAuthor", tasksCloseByAuthor);
-        return "task/task-close";
-    }
-
 }

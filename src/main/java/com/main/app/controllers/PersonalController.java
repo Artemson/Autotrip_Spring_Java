@@ -24,9 +24,9 @@ public class PersonalController {
         List<Task> tasksExec = taskRepository.findAllByExecutor(currentUserName);
         List<Task> tasksAuthor = taskRepository.findAllByAuthor(currentUserName);
 
-        if (tasks.size() == 0) model.addAttribute("error", "Нет ни одной задачи");
-        if (tasksExec.size() == 0) model.addAttribute("errorExec", "Нет ни одной задачи");
-        if (tasksAuthor.size() == 0) model.addAttribute("errorAuthor", "Нет ни одной задачи");
+        if (tasks.size() == 0) model.addAttribute("error", "Нет ни одного тура");
+        if (tasksExec.size() == 0) model.addAttribute("errorExec", "Нет ни одного тура");
+        if (tasksAuthor.size() == 0) model.addAttribute("errorAuthor", "Нет ни одного тура");
 
         model.addAttribute("tasksAuthor", tasksAuthor);
         model.addAttribute("tasks", tasks);

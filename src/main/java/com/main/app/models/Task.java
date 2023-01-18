@@ -1,6 +1,7 @@
 package com.main.app.models;
 
 import javax.persistence.*;
+import java.io.File;
 import java.sql.Date;
 
 @Entity
@@ -22,14 +23,13 @@ public class Task {
 
     public String fullText;
 
-    public Date deadline;
-
     public Date date;
     public String price;
+    public String rate;
     public Date depart;
     public Date arrival;
-    /*public String manager;
-    public String client;*/
+    public String feedback;
+    public File[] images;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -39,12 +39,15 @@ public class Task {
 
     }
 
-    public Task(String name, String status, String author, String fullText, String price, Date depart, Date arrival, String executor, String observer,  Date date, User user) {
+    public Task(String name, String status, String feedback, String rate, File[] images, String author, String fullText, String price, Date depart, Date arrival, String executor, String observer,  Date date, User user) {
         this.name = name;
         this.status = status;
+        this.feedback = feedback;
+        this.rate = rate;
         this.author = author;
         this.fullText = fullText;
         this.price = price;
+        this.images = images;
         this.depart = depart;
         this.arrival = arrival;
         this.observer = observer;
@@ -92,6 +95,13 @@ public class Task {
     public void setPrice(String price) {
         this.price = price;
     }
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
 
     public String getStatus() {
         return status;
@@ -117,6 +127,14 @@ public class Task {
         this.executor = executor;
     }
 
+    public File[] getImages() {
+        return images;
+    }
+
+    public void setImages(File[] images) {
+        this.images = images;
+    }
+
     public String getObserver() {
         return observer;
     }
@@ -125,28 +143,20 @@ public class Task {
         this.observer = observer;
     }
 
-    /*public String getManager() {
-        return manager;
-    }
-
-    public void setManager(String manager) {
-        this.manager = manager;
-    }
-
-    public String getClient() {
-        return client;
-    }
-
-    public void setClient(String client) {
-        this.client = client;
-    }
-*/
     public String getFullText() {
         return fullText;
     }
 
     public void setFullText(String fullText) {
         this.fullText = fullText;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 
     public Date getDate() {

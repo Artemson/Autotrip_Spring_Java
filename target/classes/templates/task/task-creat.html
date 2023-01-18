@@ -32,58 +32,59 @@
             <div class="mb-3 row">
                 <label for="staticName" class="col-sm-2 col-form-label">Тур</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control bg-light" id="staticName" placeholder="Город, Страна">
+                    <input required type="text" name="name" class="form-control bg-light" id="staticName" placeholder="Город, Страна">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="inputFullText" class="col-sm-2 col-form-label">Описание</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="fullText" id="inputFullText" placeholder="Описание отеля и номера"></textarea>
+                    <textarea required class="form-control" name="fullText" id="inputFullText" placeholder="Описание отеля и номера"></textarea>
                 </div>
             </div>
-
-            <!--<div class="mb-3 row">
-                <label for="staticExecutor" class="col-sm-2 col-form-label">Исполнитель</label>
-                <div class="col-sm-10">
-                    <input type="text" name="executor" class="form-control bg-light" id="staticExecutor">
-                </div>
-            </div>-->
 
             <div class="mb-3 row">
                 <label for="staticPrice" class="col-sm-2 col-form-label">Стоимость</label>
                 <div class="col-sm-10">
-                    <input type="number" name="price" class="form-control bg-light" id="staticPrice" placeholder="Стоимость в рублях">
+                    <input required type="number" name="price" class="form-control bg-light" id="staticPrice" placeholder="Стоимость в рублях">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="staticDepartDate" class="col-sm-2 col-form-label">Дата вылета</label>
                 <div class="col-sm-auto">
-                    <input type="date" name="depart" class="form-control bg-light" id="staticDepartDate">
+                    <input required type="date" name="depart" class="form-control bg-light" id="staticDepartDate">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="staticArrivalDate" class="col-sm-2 col-form-label">Дата прилета</label>
                 <div class="col-sm-auto">
-                    <input type="date" name="arrival" class="form-control bg-light" id="staticArrivalDate">
+                    <input required type="date" name="arrival" class="form-control bg-light" id="staticArrivalDate">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="staticObserver" class="col-sm-2 col-form-label">Менеджер</label>
                 <div class="col-sm-10">
-                    <input type="text" name="observer" class="form-control bg-light" id="staticObserver" placeholder="Введите имя пользователя">
+                    <input required type="text" name="observer" class="form-control bg-light" id="staticObserver" placeholder="Введите имя пользователя">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="staticExecutor" class="col-sm-2 col-form-label">Клиент</label>
                 <div class="col-sm-10">
-                    <input type="text" name="executor" class="form-control bg-light" id="staticExecutor" placeholder="Введите имя пользователя">
+                    <input required type="text" name="executor" class="form-control bg-light" id="staticExecutor" placeholder="Введите имя пользователя">
                 </div>
             </div>
+
+            <div class="mb-3 row">
+                <label for="staticImages" class="col-sm-2 col-form-label">Фотографии</label>
+                <div class="col-sm-10">
+                    <input type="file" multiple name="images" class="form-control bg-light" id="staticImages">
+                </div>
+            </div>
+
 
             <div th:if="${error}">
                 <div class="alert alert-danger" role="alert" th:text="${error}">

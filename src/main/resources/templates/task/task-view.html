@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       class="h-100" lang="ru">
 <head>
-    <title>Создание тура</title>
+    <title>Описание тура</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
@@ -24,19 +24,29 @@
 
     <header th:insert="/blocks/header :: header-into" class=""></header>
 
-    <main class="m-5 row text-dark bg-white w-100 mx-auto" style="border-radius: 5px; border-top: #ffa53a 5px solid">
+    <main class="m-5 row text-dark bg-white w-100 mx-auto" style="border-radius: 5px; border-top: #3afffb 5px solid">
         <div class="m-0 p-0 col">
             <h2 class="my-3 p-3">
                 <i class="bi bi-bookmark"></i>
                 <span th:text="${task.name}"></span>
             </h2>
             <div class="p-3" style="background: #eeedeb;    ">
-                <a th:href="'/close-wait/'+${task.id}" class="btn btn-light shadow-sm">Подтвердить</a>
-                <a th:if="${#authorization.getAuthentication().name == task.executor}" th:href="'/deny-task/'+${task.id}" class="btn btn-light shadow-sm">Отказаться</a>
-                <a th:if="${(#authorization.getAuthentication().name == task.author) || (#authorization.getAuthentication().name.equals('admin'))}" th:href="'/edit-task/'+${task.id}" class="btn btn-light shadow-sm">Изменить</a>
-                <a th:if="${(#authorization.getAuthentication().name == task.author) || (#authorization.getAuthentication().name.equals('admin'))}" th:href="'/delete-task/'+${task.id}" class="btn btn-outline-danger">Удалить</a>
+                <a th:if="${(#authorization.getAuthentication().name == task.executor) && (task.status.equals('Открыт'))}" th:href="'/accept-task/'+${task.id}" class="btn btn-outline-success">Принять и оплатить</a>
+                <a th:if="${(#authorization.getAuthentication().name == task.executor) && (task.status.equals('Открыт'))}" th:href="'/deny-task/'+${task.id}" class="btn btn-outline-danger">Отказаться</a>
+                <a th:if="${(#authorization.getAuthentication().name == task.executor) && (task.status.equals('Подтвержден'))}" th:href="'/add-fb/'+${task.id}" class="btn btn-outline-warning">Добавить отзыв</a>
+                <a th:if="${((#authorization.getAuthentication().name == task.author) || (#authorization.getAuthentication().name.equals('admin'))) && (task.status.equals('Принят и оплачен'))}" th:href="'/close-wait/'+${task.id}" class="btn btn-outline-primary">Подтвердить</a>
+                <a th:if="${(#authorization.getAuthentication().name == task.author) || (#authorization.getAuthentication().name.equals('admin')) || (#authorization.getAuthentication().name == task.observer)}" th:href="'/task-edit/'+${task.id}" class="btn btn-outline-secondary">Изменить</a>
+                <a th:if="${(#authorization.getAuthentication().name == task.author) || (#authorization.getAuthentication().name.equals('admin')) || (#authorization.getAuthentication().name == task.observer)}" th:href="'/delete-task/'+${task.id}" class="btn btn-outline-danger">Удалить</a>
             </div>
-            <p class="mt-4 p-3" th:text="${task.fullText}" style="border-radius: 5px;">
+            <p class="mt-4 p-3" th:text="'Описание: '+${task.fullText}" style="border-radius: 5px;">
+
+            </p>
+
+            <p th:if="${(task.status.equals('Добавлен отзыв'))}" class="mt-4 p-3" th:text="'Отзыв клиента: '+${task.feedback}" style="border-radius: 5px;">
+
+            </p>
+
+            <p th:if="${(task.status.equals('Добавлен отзыв'))}" class="mt-4 p-3" th:text="'Оценка тура: '+${task.rate}" style="border-radius: 5px;">
 
             </p>
         </div>
@@ -86,6 +96,8 @@
                     <label for="observer" class="p-0 col col-form-label">Менеджер:</label>
                     <p class="col-sm-9 m-0" th:text="${task.observer}" id="observer"></p>
                 </div>
+
+                <a style="margin-left:15px; margin-top:15px" th:href="'/images-task/'+${task.id}" class="btn btn-outline-secondary">Изображения</a>
 
             </div>
         </div>

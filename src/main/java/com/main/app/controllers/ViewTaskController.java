@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.File;
 import java.util.Date;
 import java.util.Objects;
 
@@ -30,7 +31,13 @@ public class ViewTaskController {
         return "task/task-view";
     }
 
-    @GetMapping("/edit-task/{id}")
+    @GetMapping("/images-task/{id}")
+    public String images(Model model, @PathVariable(value = "id") long id) {
+        model.addAttribute("task", taskRepository.findById(id).get());
+        return "task/task-img";
+    }
+
+    @GetMapping("/task-edit/{id}")
     public String edit(Model model, @PathVariable(value = "id") long id) {
         Task task = taskRepository.findById(id).get();
         if ((Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), task.author)) || (SecurityContextHolder.getContext().getAuthentication().getName().equals("admin"))) {
@@ -41,7 +48,7 @@ public class ViewTaskController {
         return "task/task-edit";
     }
 
-    @PostMapping("/edit-task/{id}")
+    @PostMapping("/task-edit/{id}")
     public String postEdit(Model model,
                            @PathVariable(value = "id") long id,
                            @RequestParam String name,
@@ -50,7 +57,8 @@ public class ViewTaskController {
                            @RequestParam String depart,
                            @RequestParam String arrival,
                            @RequestParam String observer,
-                           @RequestParam String executor){
+                           @RequestParam String executor,
+                           @RequestParam File[] images){
         Task task = taskRepository.findById(id).get();
 
         if (userRepository.findByUsername(observer) == null && !(observer.equals(""))) {
@@ -85,6 +93,7 @@ public class ViewTaskController {
         task.setObserver(observer);
         task.setExecutor(executor);
         task.setPrice(price);
+        task.setImages(images);
         taskRepository.save(task);
         return "redirect:/view/"+id;
     }
@@ -97,16 +106,7 @@ public class ViewTaskController {
             taskRepository.save(task);
             return "redirect:/view/"+id;
         }
-        if (Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), task.executor)){
-            task.setStatus("Ожидает подтверждения");
-            taskRepository.save(task);
-            return "redirect:/view/"+id;
-        }
-
-        task.setStatus("Закрыт автором");
-        taskRepository.save(task);
         return "redirect:/view/"+id;
-
     }
 
     @GetMapping("/deny-task/{id}")
@@ -114,6 +114,62 @@ public class ViewTaskController {
         Task task = taskRepository.findById(id).get();
         if (Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), task.executor)) {
             task.setStatus("Отклонен");
+            taskRepository.save(task);
+            return "redirect:/view/"+id;
+        }
+        return "redirect:/view/"+id;
+    }
+
+    @GetMapping("/add-fb/{id}")
+    public String feedback(Model model, @PathVariable(value = "id") long id) {
+        Task task = taskRepository.findById(id).get();
+        if (Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), task.executor)) {
+            model.addAttribute("task", task);
+        }else{
+            return "redirect:/view/"+id;
+        }
+        return "task/task-fb";
+    }
+
+    /*@GetMapping("/images-task/{id}")
+    public String images(Model model, @PathVariable(value = "id") long id) {
+        Task task = taskRepository.findById(id).get();
+        if (Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), task.executor)) {
+            model.addAttribute("task", task);
+        }else{
+            return "redirect:/view/"+id;
+        }
+        return "task/task-img";
+    }*/
+
+    /*@GetMapping("/images-task/{id}")
+    public String images(@PathVariable(value = "id") long id) {
+        return "task/task-img";
+    }*/
+
+    @PostMapping("/add-fb/{id}")
+    public String postFeedback(Model model,
+                           @PathVariable(value = "id") long id,
+                           @RequestParam String feedback,
+                           @RequestParam String rate){
+        Task task = taskRepository.findById(id).get();
+
+        if (feedback.equals("")) {
+            model.addAttribute("error", "Вы ничего не написали!");
+            return "task/task-fb";
+        }
+        task.setFeedback(feedback);
+        task.setRate(rate);
+        task.setStatus("Добавлен отзыв");
+        taskRepository.save(task);
+        return "redirect:/view/"+id;
+    }
+
+    @GetMapping("/accept-task/{id}")
+    public String acceptTask(Model model, @PathVariable(value = "id") long id){
+        Task task = taskRepository.findById(id).get();
+        if (Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), task.executor)) {
+            task.setStatus("Принят и оплачен");
             taskRepository.save(task);
             return "redirect:/view/"+id;
         }

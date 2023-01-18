@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      class="h-100" lang="ru">
+<head>
+  <title>Туры</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script th:src="@{/js/search.js}"></script>
+  <style>
+        input {
+            border-radius: .25rem;
+        }
+    </style>
+</head>
+<body class="d-flex h-100 text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <header th:insert="/blocks/header :: header-into" class=""></header>
+
+  <main class="m-3 w-50 mx-auto bg-light p-2" style="border-radius: 15px">
+    <table th:if="${(task.name.equals('Москва, Россия'))}" class="table table-borderless mx-auto">
+      <thead>
+      <tr>
+        <th scope="col">Изображения</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://static.tildacdn.com/tild3636-3462-4535-b236-353064623166/01.jpg"><div align="center" style="font-weight: bold">Общий вид на город</div></td>
+      </tr>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://cont.ws/uploads/pic/2020/4/отель.jpg"><div align="center" style="font-weight: bold">Отель</div></td>
+      </tr>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://s.101hotelscdn.ru/uploads/image/hotel_image/9585/3260412.jpg"><div style="font-weight: bold" align="center">Номер в отеле</div></td>
+      </tr>
+      </tbody>
+    </table>
+    <table th:if="${(task.name.equals('Санкт-Петербург, Россия'))}" class="table table-borderless mx-auto">
+      <thead>
+      <tr>
+        <th scope="col">Изображения</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://ic.pics.livejournal.com/air_vision/76938106/13174/13174_original.jpg"><div align="center" style="font-weight: bold">Общий вид на город</div></td>
+      </tr>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://avatars.mds.yandex.net/get-pdb/38069/1efb416f-cb17-48ee-803d-2697cdad3c19/s1200?webp=false"><div align="center" style="font-weight: bold">Отель</div></td>
+      </tr>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://megotel.ru/images/hotels/70473/7.jpg"><div style="font-weight: bold" align="center">Номер в отеле</div></td>
+      </tr>
+      </tbody>
+    </table>
+    <table th:if="${(task.name.equals('Нячанг, Вьетнам'))}" class="table table-borderless mx-auto">
+      <thead>
+      <tr>
+        <th scope="col">Изображения</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://www.videcam.ru/wp-content/uploads/2022/03/2763.jpg"><div align="center" style="font-weight: bold">Общий вид на город</div></td>
+      </tr>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://toursvietnam.ru/wp-content/uploads/2021/02/raspolozhenie-dendro-gold-hotel-scaled.jpg"><div align="center" style="font-weight: bold">Отель</div></td>
+      </tr>
+      <tr>
+        <td align="center"><img width="820px" border="2" src="https://toursvietnam.ru/wp-content/uploads/2021/02/nomera-ih-osnaschenie-2048x1535.jpg"><div style="font-weight: bold" align="center">Номер в отеле</div></td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="mt-auto text-white-50 text-center">
+    <p>Курсовая работа по разработке Java-приложений. <br> Авторы: Бандурин Н.А., Ветлугаев А.С.</p>
+  </footer>
+</div>
+</body>
+</html>

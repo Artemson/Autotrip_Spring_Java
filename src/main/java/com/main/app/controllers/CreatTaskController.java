@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.File;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -27,7 +29,7 @@ public class CreatTaskController {
     }
 
     @PostMapping("/creatTask")
-    public String creatPost(Model model, @RequestParam String name, @RequestParam String fullText, @RequestParam String price, @RequestParam String depart, @RequestParam String arrival, @RequestParam String observer, @RequestParam String executor) {
+    public String creatPost(Model model, @RequestParam String name, @RequestParam String fullText, @RequestParam String price, @RequestParam String depart, @RequestParam String arrival, @RequestParam String observer, @RequestParam String executor, @RequestParam File[] images) {
 
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
 
@@ -58,7 +60,7 @@ public class CreatTaskController {
         if (executor.equals("")) {
             executor = "Нет клиента";
         }
-        Task task = new Task(name, "Открыт", currentUserName, fullText, price, Date.valueOf(depart), Date.valueOf(arrival), executor, observer, new java.sql.Date(Calendar.getInstance().getTime().getTime()), userRepository.findByUsername(currentUserName));
+        Task task = new Task(name, "Открыт", "null", "0", images, currentUserName, fullText, price, Date.valueOf(depart), Date.valueOf(arrival), executor, observer, new java.sql.Date(Calendar.getInstance().getTime().getTime()), userRepository.findByUsername(currentUserName));
         taskRepository.save(task);
         return "redirect:/personal";
     }
